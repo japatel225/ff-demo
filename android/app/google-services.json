@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "380987155994",
+    "project_id": "ff-demo-53a38",
+    "storage_bucket": "ff-demo-53a38.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380987155994:android:723d5fdbb2ea77f225d3a3",
+        "android_client_info": {
+          "package_name": "com.ff.ff_demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "380987155994-mnnmq5c7bje9mnhsg32c7fvadb9ll82f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ff.ff_demo",
+            "certificate_hash": "74f761254a8191c0e3f365bbc49feb031473fc91"
+          }
+        },
+        {
+          "client_id": "380987155994-mf4e86gkjkvh35q01lggikan28iqqbv0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAE1qze1ZOSEHm0NwIG07WsXHNIQh-lCgk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "380987155994-mf4e86gkjkvh35q01lggikan28iqqbv0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

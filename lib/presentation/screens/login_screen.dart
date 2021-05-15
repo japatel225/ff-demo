@@ -1,8 +1,12 @@
 import 'package:ff_demo/constants.dart';
 import 'package:ff_demo/presentation/screens/register_screen.dart';
 import 'package:ff_demo/presentation/widgets/password_field.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ff_demo/helper.dart';
+
+import 'home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   final emailController = TextEditingController();
@@ -36,7 +40,10 @@ class LoginScreen extends StatelessWidget {
               onPressed: null,
             ),
             const SizedBox(height: 5),
-            ElevatedButton(child: Text('Login'), onPressed: () {}),
+            ElevatedButton(
+              child: Text('Login'),
+              onPressed: () => onLoginClicked(context),
+            ),
             const SizedBox(height: 100),
             Text('Don\'t have an account?', style: bodyTextStyle),
             TextButton(
@@ -48,5 +55,35 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void onLoginClicked(BuildContext context) async {
+    if (!isValidEmail(emailController.text)) {
+      showToast('Please enter valid email');
+      return;
+    }
+
+    if (passwordController.text.isEmpty) {
+      showToast('Please enter password');
+      return;
+    }
+
+    showWaitDialog(context);
+
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+      Navigator.of(context).pop();
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (_) => HomeScreen()),
+        (route) => false,
+      );
+    } on FirebaseAuthException catch (e) {
+      //dismiss "please wait..." dialog
+      Navigator.of(context).pop();
+      showToast(e.message);
+    }
   }
 }
