@@ -1,10 +1,10 @@
 import 'package:ff_demo/constants.dart';
-import 'package:ff_demo/presentation/screens/register_screen.dart';
 import 'package:ff_demo/presentation/widgets/password_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
+class RegisterScreen extends StatelessWidget {
+  final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -17,8 +17,23 @@ class LoginScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 35),
         child: Column(
           children: [
-            SizedBox(height: screenHeight * 0.25),
-            Text('Login with email', style: bodyTextStyle),
+            SizedBox(height: screenHeight * 0.15),
+            Text('Sign up with email', style: bodyTextStyle),
+            const SizedBox(height: 20),
+            CircleAvatar(
+              radius: 50,
+              backgroundColor: themeLightBlueColor,
+              child: Icon(Icons.person, color: Colors.white, size: 35),
+            ),
+            const SizedBox(height: 15),
+            Material(
+              elevation: 4,
+              child: TextField(
+                controller: nameController,
+                decoration: InputDecoration(hintText: 'Name'),
+                textInputAction: TextInputAction.next,
+              ),
+            ),
             const SizedBox(height: 15),
             Material(
               elevation: 4,
@@ -31,18 +46,12 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(height: 15),
             PasswordField(controller: passwordController),
             const SizedBox(height: 25),
+            ElevatedButton(child: Text('Sign Up'), onPressed: () {}),
+            const SizedBox(height: 70),
+            Text('Already have an account?', style: bodyTextStyle),
             TextButton(
-              child: Text('Forgot Password?', style: textButtonTextStyle),
-              onPressed: null,
-            ),
-            const SizedBox(height: 5),
-            ElevatedButton(child: Text('Login'), onPressed: () {}),
-            const SizedBox(height: 100),
-            Text('Don\'t have an account?', style: bodyTextStyle),
-            TextButton(
-              child: Text('Sign Up', style: textButtonTextStyle),
-              onPressed: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => RegisterScreen())),
+              child: Text('Login', style: textButtonTextStyle),
+              onPressed: () => Navigator.of(context).pop(),
             ),
           ],
         ),

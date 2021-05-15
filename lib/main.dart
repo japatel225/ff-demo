@@ -1,5 +1,6 @@
 import 'package:ff_demo/constants.dart';
 import 'package:ff_demo/presentation/screens/login_screen.dart';
+import 'package:ff_demo/presentation/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
